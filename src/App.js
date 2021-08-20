@@ -7,7 +7,6 @@ import DisplayBalances from './components/DisplayBalances';
 import { useEffect, useState } from 'react';
 import EntryLines from './components/EntryLines';
 import ModalEdit from './components/ModalEdit';
-import {createStore} from 'redux';
 
 function App() {
 
@@ -63,45 +62,6 @@ function App() {
 
   }, [entries])
 
-  const store = createStore((state = initialEntries,action) =>{
-    console.log('Action: ',action)
-    let newEntries
-    switch (action.type) {
-      case 'ADD_ENTRY':
-        newEntries = state.concat(action.payload)
-        return newEntries;
-      case 'REMOVE_ENTRY':
-        newEntries = state.filter(entry => action.payload.id !== entry.id);
-        return newEntries;
-      default:
-        return state;
-    }
-    // return state;
-  });
-
-  store.subscribe(()=>{
-    console.log('store: ',store.getState());
-  })
-
-  const payload_add ={
-    id: 5,
-    description: "Hello from Redux",
-    value: 100,
-    isExpense: false
-  }
-  const payload_remove ={
-    id: 1,
-  }
-  function addEntryRedux(payload){
-    return {type: 'ADD_ENTRY', payload}
-  }
-  function removeEntryRedux(payload){
-    return {type: 'REMOVE_ENTRY', payload: {id}}
-  }
-  store.dispatch(addEntryRedux(payload_add));
-  store.dispatch(removeEntryRedux(payload_remove));
-
-  console.log('store after: ',store.getState());
 
   function deleteEntry(id){
     const result = entries.filter(entry => entry.id !== id);
