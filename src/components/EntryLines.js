@@ -2,7 +2,7 @@ import React from 'react'
 import { Container } from 'semantic-ui-react'
 import EntryLine from './EntryLine'
 
-function EntryLines({ entries, editEntry }) {
+function EntryLines({ entries }) {
     return (
         <Container>
             {entries.map((entry) => (
@@ -12,7 +12,6 @@ function EntryLines({ entries, editEntry }) {
                     // value={entry.value} 
                     // isExpense={entry.isExpense}
                     {...entry}
-                    editEntry={editEntry}
                 />
             ))}
         </Container>

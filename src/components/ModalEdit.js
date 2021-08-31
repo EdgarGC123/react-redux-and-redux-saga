@@ -21,7 +21,7 @@ function ModalEdit({ isOpen, setIsOpen, description, value, isExpense, setDescri
             </Modal.Content>
             <Modal.Actions>
                 <Button onClick={() => dispatch(closeEditModal())}>Close</Button>
-                <Button primary onClick={() => setIsOpen(false)}>Save</Button>
+                <Button primary onClick={() => dispatch(closeEditModal())}>Save</Button>
             </Modal.Actions>
         </Modal>
     )

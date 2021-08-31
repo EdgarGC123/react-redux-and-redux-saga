@@ -5,7 +5,7 @@ import { removeEntryRedux } from '../actions/entries.actions'
 import { openEditModal } from '../actions/modals.actions';
 
 
-function EntryLine({ id, description, value, isExpense = false, editEntry }) {
+function EntryLine({ id, description, value, isExpense = false }) {
     const dispatch = useDispatch();
     return (
         <>
