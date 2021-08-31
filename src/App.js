@@ -25,6 +25,8 @@ function App() {
 
   const entries = useSelector((state) => state.entries)
 
+  const isOpenRedux = useSelector(state => state.modals.isOpen);
+
   useEffect(() => {
     if (!isOpen && entryId) {
       const index = entries.findIndex(entry => entry.id === entryId);
@@ -108,7 +110,7 @@ function App() {
         setIsExpense={setIsExpense}
       />
 
-      <ModalEdit isOpen={isOpen} setIsOpen={setIsOpen}
+      <ModalEdit isOpen={isOpenRedux} setIsOpen={setIsOpen}
         addEntry={addEntry}
         description={description}
         value={value}
