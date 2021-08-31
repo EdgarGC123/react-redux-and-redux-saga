@@ -1,31 +1,13 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { Form } from 'semantic-ui-react';
-import { addEntryRedux } from '../actions/entries.actions';
 import ButtonSaveOrCancel from './ButtonSaveOrCancel';
 import EntryForm from './EntryForm';
-import { v4 as uuidv4 } from 'uuid'
+import useEntryDetails from '../hooks/useEntryDetails';
 
 function NewEntryForm() {
-
-    const [description, setDescription] = useState('');
-    const [value, setValue] = useState(0);
-    const [isExpense, setIsExpense] = useState(true);
-
-    const dispatch = useDispatch()
-
-    function addEntry(params) {
-        dispatch(addEntryRedux({
-            id: uuidv4(),
-            description,
-            value,
-            isExpense,
-        }))
-
-        setDescription('');
-        setValue('');
-        setIsExpense(true)
-    }
+    const {
+        description, setDescription, value, setValue, isExpense, setIsExpense, addEntry
+    } = useEntryDetails();
     return (
         <Form unstackable>
             <EntryForm
